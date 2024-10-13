@@ -31,5 +31,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
 
-    path('dashboard', include("dashboard.urls"))
+    path('dashboard', include("dashboard.urls")),
+    path('users/', include('users.urls')),
 ]

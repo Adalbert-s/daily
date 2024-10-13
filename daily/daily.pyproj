@@ -82,6 +82,7 @@
     <Folder Include="users\templates\users\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\registerpartial.html" />
     <Content Include="app\templates\app\loginpartial.html" />
     <Content Include="dashboard\templates\dashboard\home.html" />
     <Content Include="requirements.txt" />
@@ -110,8 +111,7 @@
     <Content Include="app\static\app\scripts\_references.js" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="users\templates\users\cadastre.html" />
-    <Content Include="users\templates\users\cadastrepartial.html" />
+    <Content Include="users\templates\users\register.html" />
     <Content Include="users\templates\users\layout.html" />
     <Content Include="users\templates\users\login.html" />
   </ItemGroup>
