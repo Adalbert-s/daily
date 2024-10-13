@@ -11,8 +11,10 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # Log in the user immediately after registration
-            return redirect('home')  # Redirect to home after successful registration
+            return redirect('dashboard')  # Redirect to home after successful registration
     else:
         form = RegistrationForm()
     return render(request, 'users/register.html', {'form': form, 'title': 'Register'})
 
+def dashboard_home(request):
+    return render(request, 'dashboard/home.html', {'title': 'Dashboard'}) 

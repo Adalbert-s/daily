@@ -22,7 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '635f4611-feb5-4472-9dfb-015195f33eb7'
 
-LOGIN_REDIRECT_URL = '/dashboard/'
+
+LOGIN_REDIRECT_URL = 'dashboard_home'  # Redireciona para a home do dashboard após login
+LOGOUT_REDIRECT_URL = 'login'  # Redireciona para a página de login após logout
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
