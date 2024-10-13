@@ -17,4 +17,4 @@ def register(request):
     return render(request, 'users/register.html', {'form': form, 'title': 'Register'})
 
 def dashboard_home(request):
-    return render(request, 'dashboard/home.html', {'title': 'Dashboard'})
+    return render(request, 'dashboard/home.html', {'title': 'Dashboard'}) #
