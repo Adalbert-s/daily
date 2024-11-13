@@ -42,6 +42,7 @@
     <Compile Include="dashboard\apps.py" />
     <Compile Include="dashboard\migrations\__init__.py" />
     <Compile Include="dashboard\models.py" />
+    <Compile Include="dashboard\serializers.py" />
     <Compile Include="dashboard\tests.py" />
     <Compile Include="dashboard\urls.py" />
     <Compile Include="dashboard\views.py" />
@@ -74,6 +75,10 @@
     <Folder Include="daily\" />
     <Folder Include="dashboard\" />
     <Folder Include="dashboard\migrations\" />
+    <Folder Include="dashboard\static\" />
+    <Folder Include="dashboard\static\dashboard\" />
+    <Folder Include="dashboard\static\dashboard\css\" />
+    <Folder Include="dashboard\static\dashboard\js\" />
     <Folder Include="dashboard\templates\" />
     <Folder Include="dashboard\templates\dashboard\" />
     <Folder Include="users\" />
@@ -83,7 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\app\loginpartial.html" />
-    <Content Include="dashboard\templates\dashboard\home.html" />
+    <Content Include="dashboard\static\dashboard\css\style.css" />
+    <Content Include="dashboard\static\dashboard\js\script.js" />
+    <Content Include="dashboard\templates\dashboard\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
