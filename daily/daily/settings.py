@@ -26,7 +26,7 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+AUTH_USER_MODEL = 'users.CustomUser'
 ALLOWED_HOSTS = []
 
 # Application references
@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'dashboard',
     'users',
     
-
     
     # Add your apps here to enable them
     'django.contrib.admin',

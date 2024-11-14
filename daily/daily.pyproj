@@ -83,6 +83,9 @@
     <Folder Include="dashboard\templates\dashboard\" />
     <Folder Include="users\" />
     <Folder Include="users\migrations\" />
+    <Folder Include="users\static\" />
+    <Folder Include="users\static\users\" />
+    <Folder Include="users\static\users\css\" />
     <Folder Include="users\templates\" />
     <Folder Include="users\templates\users\" />
   </ItemGroup>
@@ -117,10 +120,11 @@
     <Content Include="app\static\app\scripts\_references.js" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="users\templates\users\cadastre.html" />
-    <Content Include="users\templates\users\cadastrepartial.html" />
+    <Content Include="users\static\users\css\sytle.css" />
     <Content Include="users\templates\users\layout.html" />
     <Content Include="users\templates\users\login.html" />
+    <Content Include="users\templates\users\register.html" />
+    <Content Include="users\templates\users\registerpartial.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">

@@ -1,7 +1,8 @@
-"""
-Definition of models.
-"""
+# users/models.py
 
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+class CustomUser(AbstractUser):
+    # Aqui você pode adicionar campos personalizados, se precisar
+    pass

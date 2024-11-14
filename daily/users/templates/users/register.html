@@ -1,11 +1,16 @@
 <!-- users/templates/users/register.html -->
 {% extends "app/layout.html" %}
 
+{% block title %}Cadastro{% endblock %}
+
 {% block content %}
-<h2>{{ title }}</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+<div class="form-container">
+    <h2>Cadastro</h2>
+    <form method="post" class="register-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+    <p class="login-link">Ja possui uma conta? <a href="{% url 'login' %}">Entrar</a></p>
+</div>
 {% endblock %}
