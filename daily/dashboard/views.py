@@ -11,10 +11,7 @@ def home(request):
 
 @api_view(['GET'])
 def get_notes(request):
-    if not request.user.is_authenticated:
-        return Response({'error': 'Authentication required'}, status=status.HTTP_401_UNAUTHORIZED)
-    
-    notes = Note.objects.filter(user=request.user)
+    notes = Note.objects.all() 
     serializer = NoteSerializer(notes, many=True)
     return Response(serializer.data)
 
