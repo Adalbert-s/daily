@@ -22,11 +22,12 @@ body {
     align-items: center;
     justify-content: center;
     overflow-y: scroll;
+    margin-top: 70px;
 }
 
 #list-header {
     display: flex;
-    align-items: left;
+    align-items: end;
     justify-content: left;
 }
 
