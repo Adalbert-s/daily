@@ -27,7 +27,7 @@ body {
 
 #list-header {
     display: flex;
-    align-items: left;
+    align-items: end;
     justify-content: left;
 }
 
