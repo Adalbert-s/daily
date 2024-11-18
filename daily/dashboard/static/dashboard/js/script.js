@@ -3,7 +3,7 @@ function popup() {
     const popupContainer = document.createElement("div");
     popupContainer.innerHTML = `
         <div id="popupContainer">
-            <h1>New Note</h1>
+            <h1>Novo </h1>
             <textarea id="note-text" placeholder="Enter your note..."></textarea>
             <div id="btn-container">
                 <button id="submitBtn" onclick="createNote()">Create Note</button>
