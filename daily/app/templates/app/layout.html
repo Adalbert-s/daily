@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - Django</title>
+    <title>{% block title %}Início{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -23,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'home' %}">Início</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -34,7 +34,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }}</p>
         </footer>
     </div>
 
