@@ -157,3 +157,9 @@ async function deleteNote(noteId) {
 
 // Chama a função para carregar as notas ao abrir a página
 displayNotes();
+
+// Função de Logout
+function logout() {
+    window.location.href = '/logout/'; // Substitua '/logout/' pela URL do logout, se for diferente
+}
+
