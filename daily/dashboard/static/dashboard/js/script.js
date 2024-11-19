@@ -43,6 +43,7 @@ async function createNote() {
     const noteText = document.getElementById('note-text').value.trim();
     if (noteText !== '') {
         const note = { text: noteText };
+        console.log('Sending POST request to /dashboard/api/notes/create/');
         const response = await fetch('/dashboard/api/notes/create/', {
             method: 'POST',
             headers: {
@@ -55,12 +56,14 @@ async function createNote() {
         if (response.ok) {
             console.log('Note created successfully');
             closePopup();
-            displayNotes();  // Atualiza a lista de notas
+            displayNotes();
         } else {
             console.error('Failed to create note');
         }
     }
 }
+
+
 
 // Função para carregar e exibir as notas
 async function displayNotes() {
