@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [  
     path('', views.home, name='dashboard_home'),
@@ -7,5 +9,6 @@ urlpatterns = [
     path('api/notes/create/', views.create_note, name='create_note'),
     path('api/notes/<int:note_id>/update/', views.update_note, name='update_note'),
     path('api/notes/<int:note_id>/delete/', views.delete_note, name='delete_note'),
+    path('/logout', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 ]
 

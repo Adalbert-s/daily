@@ -25,6 +25,8 @@ SECRET_KEY = '635f4611-feb5-4472-9dfb-015195f33eb7'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_REDIRECT_URL = '/'
 
+LOGOUT_REDIRECT_URL = '/'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 AUTH_USER_MODEL = 'users.CustomUser'
