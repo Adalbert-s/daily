@@ -23,20 +23,27 @@ def get_notes(request):
     return Response(serializer.data)
 
 # View para criar uma nova nota (POST)
+@permission_classes([IsAuthenticated])
+@api_view(['POST'])
 
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def create_note(request):
     logger.info(f"Received request method: {request.method}")
     logger.info(f"Request data: {request.data}")
+    
     # Copia os dados enviados e adiciona o usuário autenticado
     data = request.data.copy()
-    data['user'] = request.user.id
+    data['user'] = request.user.id  # Adiciona o ID do usuário autenticado
+    
+    # Cria o serializer com os dados atualizados
     serializer = NoteSerializer(data=data)
+    
     if serializer.is_valid():
-        serializer.save()  # Salva os dados no banco
+        serializer.save()  # Salva no banco de dados
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # View para atualizar uma nota existente (PUT)
 @api_view(['PUT'])
