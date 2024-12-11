@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>daily</Name>
     <RootNamespace>daily</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup>
@@ -47,6 +47,7 @@
     <Compile Include="dashboard\urls.py" />
     <Compile Include="dashboard\views.py" />
     <Compile Include="dashboard\__init__.py" />
+    <Compile Include="fix_encoding.py" />
     <Compile Include="manage.py" />
     <Compile Include="daily\__init__.py" />
     <Compile Include="daily\settings.py" />
@@ -68,7 +69,9 @@
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\css\" />
     <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\js\" />
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -82,14 +85,31 @@
     <Folder Include="dashboard\templates\" />
     <Folder Include="dashboard\templates\dashboard\" />
     <Folder Include="users\" />
+    <Folder Include="users\assets\" />
+    <Folder Include="users\assets\brand\" />
+    <Folder Include="users\assets\dist\" />
+    <Folder Include="users\assets\dist\css\" />
+    <Folder Include="users\assets\dist\js\" />
+    <Folder Include="users\assets\js\" />
     <Folder Include="users\migrations\" />
     <Folder Include="users\static\" />
+    <Folder Include="users\static\assets\" />
+    <Folder Include="users\static\assets\brand\" />
+    <Folder Include="users\static\assets\dist\" />
+    <Folder Include="users\static\assets\dist\css\" />
+    <Folder Include="users\static\assets\dist\js\" />
+    <Folder Include="users\static\assets\js\" />
     <Folder Include="users\static\users\" />
     <Folder Include="users\static\users\css\" />
+    <Folder Include="users\static\users\js\" />
     <Folder Include="users\templates\" />
     <Folder Include="users\templates\users\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\css\dashboard.css" />
+    <Content Include="app\static\app\css\dashboard.rtl.css" />
+    <Content Include="app\static\app\js\color-modes.js" />
+    <Content Include="app\static\app\js\dashboard.js" />
     <Content Include="app\templates\app\loginpartial.html" />
     <Content Include="dashboard\static\dashboard\css\style.css" />
     <Content Include="dashboard\static\dashboard\js\script.js" />
@@ -120,11 +140,31 @@
     <Content Include="app\static\app\scripts\_references.js" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
+    <Content Include="users\assets\brand\bootstrap-logo-white.svg" />
+    <Content Include="users\assets\brand\bootstrap-logo.svg" />
+    <Content Include="users\assets\dist\css\bootstrap.min.css" />
+    <Content Include="users\assets\dist\css\bootstrap.min.css.map" />
+    <Content Include="users\assets\dist\css\bootstrap.rtl.min.css" />
+    <Content Include="users\assets\dist\css\bootstrap.rtl.min.css.map" />
+    <Content Include="users\assets\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="users\assets\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="users\assets\js\color-modes.js" />
+    <Content Include="users\static\assets\brand\bootstrap-logo-white.svg" />
+    <Content Include="users\static\assets\brand\bootstrap-logo.svg" />
+    <Content Include="users\static\assets\dist\css\bootstrap.min.css" />
+    <Content Include="users\static\assets\dist\css\bootstrap.min.css.map" />
+    <Content Include="users\static\assets\dist\css\bootstrap.rtl.min.css" />
+    <Content Include="users\static\assets\dist\css\bootstrap.rtl.min.css.map" />
+    <Content Include="users\static\assets\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="users\static\assets\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="users\static\assets\js\color-modes.js" />
     <Content Include="users\static\users\css\sytle.css" />
+    <Content Include="users\static\users\js\color-modes.js" />
     <Content Include="users\templates\users\layout.html" />
     <Content Include="users\templates\users\login.html" />
     <Content Include="users\templates\users\register.html" />
     <Content Include="users\templates\users\registerpartial.html" />
+    <Content Include="users\templates\users\sytle.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
@@ -132,10 +172,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env1\">
-      <Id>env1</Id>
-      <Version>0.0</Version>
-      <Description>env1 (Python 3.12 (64-bit))</Description>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.9</Version>
+      <Description>env (Python 3.9 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
