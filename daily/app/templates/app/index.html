@@ -206,6 +206,31 @@
 
         <ul class="navbar-nav flex-row d-md-none">
         </ul>
+        <div style="position: relative; display: inline-block; margin-left: auto; margin-right: 50px;">
+            <button id="notibutton" style="color: white; font-size: 20px; background: none; border: none; cursor: pointer;" title="Notificação">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM8 1a5 5 0 0 0-5 5v3.535l-1.5 1.5V11h13v-1.465l-1.5-1.5V6a5 5 0 0 0-5-5z" />
+                </svg>
+            </button>
+
+            <div id="notificacoes" style="
+              display: none;
+              position: absolute;
+              top: 30px;
+              right: 0;
+              background-color: white;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+              z-index: 100;
+              width: 320px;
+              color: #333;
+            ">
+                <strong>Notificações</strong><br>
+                Suas notificações aparecerão aqui!
+            </div>
+        </div>
     </header>
 
     <div class="container-fluid">
@@ -227,7 +252,7 @@
                                 {% else %}
                                 <span class="nav-link d-flex align-items-center gap-2 disabled">
                                     <svg class="bi"><use xlink:href="#house-fill" /></svg>
-                                    Dashboard
+                                    Dashboard                                    
                                 </span>
                                 {% endif %}
                             </li>
@@ -270,7 +295,7 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Dashboard</h1>  
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary" id="exportButton">Export</button>
@@ -288,6 +313,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
     <script src="{% static 'dashboard/js/script.js' %}"></script>
+    <script>
+        const btn = document.getElementById('notibutton');
+        const info = document.getElementById('notificacoes');
+
+        btn.addEventListener('click', () => {
+            info.style.display = info.style.display === 'none' ? 'block' : 'none';
+        });
+
+        window.addEventListener('click', function (e) {
+            if (!btn.contains(e.target) && !info.contains(e.target)) {
+                info.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>
