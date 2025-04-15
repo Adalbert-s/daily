@@ -72,6 +72,7 @@
     <Folder Include="app\static\app\css\" />
     <Folder Include="app\static\app\fonts\" />
     <Folder Include="app\static\app\js\" />
+    <Folder Include="app\static\app\images\" />
     <Folder Include="app\static\app\scripts\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -108,6 +109,7 @@
   <ItemGroup>
     <Content Include="app\static\app\css\dashboard.css" />
     <Content Include="app\static\app\css\dashboard.rtl.css" />
+    <Content Include="app\static\app\images\favicon.ico" />
     <Content Include="app\static\app\js\color-modes.js" />
     <Content Include="app\static\app\js\dashboard.js" />
     <Content Include="app\templates\app\loginpartial.html" />

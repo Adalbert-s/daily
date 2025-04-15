@@ -15,6 +15,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
+    <title>Início</title>
+    <link rel="icon" href="{% static 'app/images/favicon.ico' %}" type="image/x-icon">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
@@ -97,6 +99,14 @@
             .bd-mode-toggle .dropdown-menu .active .bi {
                 display: block !important;
             }
+
+        [data-bs-theme="light"] #notibutton {
+            color: black;
+        }
+
+        [data-bs-theme="dark"] #notibutton {
+            color: white;
+        }
     </style>
 
     <!-- Link correto para o CSS personalizado -->
@@ -207,7 +217,7 @@
         <ul class="navbar-nav flex-row d-md-none">
         </ul>
         <div style="position: relative; display: inline-block; margin-left: auto; margin-right: 50px;">
-            <button id="notibutton" style="color: white; font-size: 20px; background: none; border: none; cursor: pointer;" title="Notificação">
+            <button id="notibutton" style="font-size: 20px; background: none; border: none; cursor: pointer;" title="Notificação">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
                     <path d="M8 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM8 1a5 5 0 0 0-5 5v3.535l-1.5 1.5V11h13v-1.465l-1.5-1.5V6a5 5 0 0 0-5-5z" />
                 </svg>
