@@ -58,6 +58,7 @@
     <Compile Include="users\forms.py" />
     <Compile Include="users\migrations\__init__.py" />
     <Compile Include="users\models.py" />
+    <Compile Include="users\services.py" />
     <Compile Include="users\tests.py" />
     <Compile Include="users\urls.py" />
     <Compile Include="users\views.py" />
