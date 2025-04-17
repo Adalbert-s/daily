@@ -464,10 +464,11 @@ C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\staticwebasset
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.TodoApi.props
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.TodoApi.props
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\staticwebassets.pack.json
-C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\TodoApi.csproj.Up2Date
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\TodoApi.dll
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\refint\TodoApi.dll
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\TodoApi.pdb
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\TodoApi.genruntimeconfig.cache
 C:\Users\home\source\repos\daily\TodoApi\TodoApi\obj\Debug\net7.0\ref\TodoApi.dll
+C:\Users\home\source\repos\daily\TodoApi\TodoApi\bin\Debug\net7.0\Npgsql.dll
+C:\Users\home\source\repos\daily\TodoApi\TodoApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

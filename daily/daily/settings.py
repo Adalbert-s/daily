@@ -1,4 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import os
+import environ
+
+# Inicialize o ambiente e leia o arquivo .env
+env = environ.Env()
+environ.Env.read_env()  
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,15 +74,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'daily.wsgi.application'
 
-# Database (sem necessidade de alteração se for utilizar SQLite, mas pode ser alterado conforme necessário)
+
+
+import environ
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# carrega .env
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# usa apenas DATABASE_URL
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': env.db()  # lê DATABASE_URL do .env
 }
 
-# Validação de Senha
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -90,22 +105,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Configuração do REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # Remover autenticação local do Django, pois será feita pela API externa
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Permite acesso a qualquer usuário, pois a autenticação será feita externamente
+        'rest_framework.permissions.AllowAny',  
     ],
     'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',  # Respostas em formato JSON
+        'rest_framework.renderers.JSONRenderer',  
     ),
 }
 
-# CORS (para permitir chamadas da API externa)
+
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -130,23 +142,23 @@ CORS_ALLOW_METHODS = [
 ]
 
 
-# URLs da API externa
+
 EXTERNAL_API_BASE_URL = 'https://api-1-4c9f.onrender.com/'
 EXTERNAL_API_REGISTER_URL = EXTERNAL_API_BASE_URL + 'api/TodoItem'
 
 
-# Internationalization
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
 
-# Configuração dos arquivos estáticos
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static'),  # Caminho para os arquivos estáticos
+    os.path.join(BASE_DIR, 'app/static'),  
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

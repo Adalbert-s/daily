@@ -13,6 +13,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.20",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.20",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.12",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.22",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -1383,6 +1384,31 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "13.0.0.0",
             "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
+      "Npgsql/6.0.10": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Npgsql.dll": {
+            "assemblyVersion": "6.0.10.0",
+            "fileVersion": "6.0.10.0"
+          }
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/6.0.22": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.20",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.20",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.20",
+          "Npgsql": "6.0.10"
+        },
+        "runtime": {
+          "lib/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
+            "assemblyVersion": "6.0.22.0",
+            "fileVersion": "6.0.22.0"
           }
         }
       },
@@ -3038,6 +3064,20 @@
       "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "path": "newtonsoft.json/13.0.1",
       "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "Npgsql/6.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vitwybpiG32EUOScHSjr1kTej8PwoYEWjHwTel5lwsq0OY4p0LJd80ZeGQHLa6zq12hsq9vyAfT9K80iWrpxPA==",
+      "path": "npgsql/6.0.10",
+      "hashPath": "npgsql.6.0.10.nupkg.sha512"
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL/6.0.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iD0X/yef9KBsCBMDT1ZytW3pPYeYHeceUuiznaeGfkltvluG7O25aG2fwv2sO6icESL0CLNwNAF1Mu4cFrKmaA==",
+      "path": "npgsql.entityframeworkcore.postgresql/6.0.22",
+      "hashPath": "npgsql.entityframeworkcore.postgresql.6.0.22.nupkg.sha512"
     },
     "NuGet.Common/6.6.1": {
       "type": "package",
