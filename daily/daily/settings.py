@@ -1,45 +1,27 @@
-"""
-Django settings for daily project.
-
-Based on 'django-admin startproject' using Django 2.1.2.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/2.1/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/2.1/ref/settings/
-"""
-
 import os
-import posixpath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Secret Key (sempre manter em segredo)
 SECRET_KEY = '635f4611-feb5-4472-9dfb-015195f33eb7'
 
-LOGIN_REDIRECT_URL = '/dashboard/'
-LOGIN_REDIRECT_URL = '/'
-
-LOGOUT_REDIRECT_URL = '/'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+# Debug (desabilitar em produção)
 DEBUG = True
-AUTH_USER_MODEL = 'users.CustomUser'
 ALLOWED_HOSTS = []
 
-# Application references
-# https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
+# Definindo o modelo de usuário customizado
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Redirecionamento após login e logout
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# Aplicativos instalados
 INSTALLED_APPS = [
     'app',
     'dashboard',
     'users',
-   
-    # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,8 +33,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 ]
 
-# Middleware framework
-# https://docs.djangoproject.com/en/2.1/topics/http/middleware/
+# Middlewares
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,15 +42,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'daily.urls'
 
-# Template configuration
-# https://docs.djangoproject.com/en/2.1/topics/templates/
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -87,8 +65,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'daily.wsgi.application'
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
+# Database (sem necessidade de alteração se for utilizar SQLite, mas pode ser alterado conforme necessário)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -96,8 +74,7 @@ DATABASES = {
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# Validação de Senha
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -113,41 +90,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Configuração do REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        # Remover autenticação local do Django, pois será feita pela API externa
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',  # Permite acesso a qualquer usuário, pois a autenticação será feita externamente
     ],
     'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.JSONRenderer',  # Respostas em formato JSON
     ),
-
 }
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
+# CORS (para permitir chamadas da API externa)
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -169,8 +129,13 @@ CORS_ALLOW_METHODS = [
     'OPTIONS',
 ]
 
+
+# URLs da API externa
+EXTERNAL_API_BASE_URL = 'https://api-1-4c9f.onrender.com/'
+EXTERNAL_API_REGISTER_URL = EXTERNAL_API_BASE_URL + 'api/TodoItem'
+
+
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -178,17 +143,10 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 
-# Adicionar a configuração para procurar arquivos estáticos no diretório correto
+# Configuração dos arquivos estáticos
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static'),  # Caminho correto para arquivos estáticos
+    os.path.join(BASE_DIR, 'app/static'),  # Caminho para os arquivos estáticos
 ]
-
-# Diretório onde os arquivos estáticos serão coletados ao rodar 'collectstatic'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-
-

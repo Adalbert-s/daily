@@ -10,6 +10,5 @@ urlpatterns = [
              authentication_form=forms.BootstrapAuthenticationForm
          ), 
          name='login'),
-    path('register/', views.register, name='register'),
-    path('login/', LoginView.as_view(template_name='users/login.html'), name='login'),
+ path('register/', views.Register.as_view(), name='register'),
 ]

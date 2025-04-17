@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>daily</Name>
     <RootNamespace>daily</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env2|$(MSBuildProjectFullPath)</InterpreterId>
     <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup>
@@ -58,7 +58,7 @@
     <Compile Include="users\forms.py" />
     <Compile Include="users\migrations\__init__.py" />
     <Compile Include="users\models.py" />
-    <Compile Include="users\services.py" />
+    <Compile Include="users\serializers.py" />
     <Compile Include="users\tests.py" />
     <Compile Include="users\urls.py" />
     <Compile Include="users\views.py" />
@@ -175,10 +175,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env\">
-      <Id>env</Id>
+    <Interpreter Include="env2\">
+      <Id>env2</Id>
       <Version>3.9</Version>
-      <Description>env (Python 3.9 (64-bit))</Description>
+      <Description>env2 (Python 3.9 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

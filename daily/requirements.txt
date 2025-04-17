@@ -17,4 +17,5 @@ soupsieve
 sqlparse
 tzdata
 django-babel
+requests
 

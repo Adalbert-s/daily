@@ -10836,7 +10836,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\home\\.nuget\\packages\\": {},
+    "C:\\Users\\roota\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -10845,14 +10845,14 @@
       "projectUniqueName": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\TodoApi.csproj",
       "projectName": "TodoApi",
       "projectPath": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\TodoApi.csproj",
-      "packagesPath": "C:\\Users\\home\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\roota\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\home\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\roota\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

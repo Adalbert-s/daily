@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TodoApi"
+    "\\TodoApi",
+    "\\TodoApi\\Models"
   ],
-  "SelectedNode": "\\TodoApi",
   "PreviewInSolutionExplorer": false
 }
