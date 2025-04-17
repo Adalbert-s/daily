@@ -13,6 +13,9 @@
 
 - Python
 - Django
+- Dotnet
+- Postgres
+- Docker
 - Bootstrap 5
 - HTML e CSS
 
