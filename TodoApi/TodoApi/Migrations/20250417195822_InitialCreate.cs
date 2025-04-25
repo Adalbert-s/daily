@@ -25,6 +25,20 @@ namespace TodoApi.Migrations
                 {
                     table.PrimaryKey("PK_TodoItems", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "TodoNotas",
+                columns: table => new
+                {
+                    Titulo = table.Column<int>(type: "integer", nullable: false),
+                    Descricao = table.Column<string>(type: "text", nullable: true),
+                    Data = table.Column<string>(type: "text", nullable: true),
+                    Hora = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TodoNotas", x => x.Titulo);
+                });
         }
 
         /// <inheritdoc />
@@ -32,6 +46,8 @@ namespace TodoApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "TodoItems");
+            migrationBuilder.DropTable(
+                 name: "TodoNotas");
         }
     }
 }
