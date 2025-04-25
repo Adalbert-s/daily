@@ -43,6 +43,24 @@ namespace TodoApi.Migrations
                     b.ToTable("TodoItems");
                 });
 #pragma warning restore 612, 618
+            modelBuilder.Entity("TodoApi.Models.TodoNota", b =>
+             {
+                 b.Property<int>("Titulo")
+                     .HasColumnType("integer");
+ 
+                 b.Property<string>("Descricao")
+                     .HasColumnType("text");
+ 
+                 b.Property<string>("Data")
+                     .HasColumnType("text");
+ 
+                 b.Property<string>("Hora")
+                     .HasColumnType("text");
+ 
+                 b.HasKey("Titulo");
+ 
+                 b.ToTable("TodoNotas"); // Nome da tabela no banco de dados
+             });
         }
     }
 }
