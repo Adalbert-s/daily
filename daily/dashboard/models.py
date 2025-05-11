@@ -9,7 +9,7 @@ class TodoNota(models.Model):
     descricao = models.TextField()
     data = models.CharField(max_length=10) 
     hora = models.CharField(max_length=5)  
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.titulo

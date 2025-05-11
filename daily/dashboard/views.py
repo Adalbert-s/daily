@@ -5,7 +5,7 @@ from rest_framework import status
 from django.shortcuts import render
 from .models import TodoNota as Note  # Renomeando TodoNota para Note
 from .serializers import TodoNotaSerializer as NoteSerializer  # Renomeando TodoNotaSerializer para NoteSerializer
-
+from django.contrib.auth import get_user_model
 import logging
 
 logger = logging.getLogger(__name__)
@@ -28,29 +28,37 @@ def get_notes(request):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
+User = get_user_model()
+
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def create_note(request):
-    """Cria uma nova nota"""
+    """Cria uma nova nota sem exigir autenticacao"""
     try:
-        serializer = NoteSerializer (data={
-            'titulo': request.data.get('titulo', ''),
-            'descricao': request.data.get('descricao', ''),
-            'data': request.data.get('data', ''),
-            'hora': request.data.get('hora', ''),
-            'user': request.user.id
-        })
-        
+        user_id = request.data.get('user')
+        user = User.objects.get(pk=user_id) if user_id else None
+
+        serializer = NoteSerializer(
+            data={
+                'titulo': request.data.get('titulo', ''),
+                'descricao': request.data.get('descricao', ''),
+                'data': request.data.get('data', ''),
+                'hora': request.data.get('hora', ''),
+                'user': user.id if user else None
+            },
+            context={'request': request}
+        )
+
         if serializer.is_valid():
             note = serializer.save()
             return Response(serializer.data, status=201)
-        
-        return Response({'errors': serializer.errors}, status=400)
-        
-    except Exception as e:
-        logger.error(f"Error creating note: {str(e)}")
-        return Response({'error': str(e)}, status=500)
 
+        return Response({'errors': serializer.errors}, status=400)
+
+    except User.DoesNotExist:
+        return Response({'error': 'Usuario nao encontrado'}, status=404)
+    except Exception as e:
+        logger.error(f"Erro ao criar nota: {str(e)}")
+        return Response({'error': str(e)}, status=500)
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_note(request, pk):

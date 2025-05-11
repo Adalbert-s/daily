@@ -35,11 +35,6 @@ urlpatterns = [
     # Dashboard (Aqui incluímos as URLs do app dashboard)
     path('dashboard/', include('dashboard.urls')),  # Certifique-se de que o app 'dashboard' tem um arquivo 'urls.py' e suas views
 
-    # APIs para Notas
-    path('api/get-notes/', api_views.get_notes, name='get_notes'),
-    path('api/create-note/', api_views.create_note, name='create_note'),
-    path('api/update-note/<int:note_id>/', api_views.update_note, name='update_note'),
-    path('api/delete-note/<int:note_id>/', api_views.delete_note, name='delete_note'),
 
     # Registro
     path('register/', views.register, name='register'),

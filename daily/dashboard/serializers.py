@@ -1,14 +1,14 @@
 # serializers.py
 from rest_framework import serializers
-from .models import TodoNota  # ou Note, conforme o seu nome
+from .models import TodoNota, User  # ou Note, conforme o seu nome
 
 class TodoNotaSerializer(serializers.ModelSerializer):
     class Meta:
         model = TodoNota
-        fields = ['id', 'titulo', 'descricao', 'data', 'hora', 'user']
+        fields = ['id', 'titulo', 'descricao', 'data', 'hora']
 
-    def create(self, validated_data):
-        # Asegure-se de que o 'user' esteja associado ao usuário autenticado
-        user = self.context['request'].user  # Pega o usuário autenticado
-        note = TodoNota.objects.create(user=user, **validated_data)
-        return note
+def create(self, validated_data):
+    user_id = validated_data.pop('user')
+    user = User.objects.get(pk=user_id)
+    return TodoNota.objects.create(user=user, **validated_data)
+
