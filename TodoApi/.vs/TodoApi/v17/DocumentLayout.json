@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|c:\\users\\home\\source\\repos\\daily\\todoapi\\todoapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|solutionrelative:todoapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|c:\\users\\home\\source\\repos\\daily\\todoapi\\todoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|solutionrelative:todoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|c:\\users\\home\\source\\repos\\daily\\todoapi\\todoapi\\models\\todonota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|solutionrelative:todoapi\\models\\todonota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|c:\\users\\home\\source\\repos\\daily\\todoapi\\todoapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|solutionrelative:todoapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{28DD1C1C-F64F-41D5-B364-D8356067074F}|TodoApi\\TodoApi.csproj|c:\\users\\home\\source\\repos\\daily\\todoapi\\todoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "TodoNota.cs",
+              "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Models\\TodoNota.cs",
+              "RelativeDocumentMoniker": "TodoApi\\Models\\TodoNota.cs",
+              "ToolTip": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Models\\TodoNota.cs",
+              "RelativeToolTip": "TodoApi\\Models\\TodoNota.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T20:31:53.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Dockerfile",
               "RelativeDocumentMoniker": "TodoApi\\Dockerfile",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "TodoApi\\Properties\\launchSettings.json",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\appsettings.json",
               "RelativeDocumentMoniker": "TodoApi\\appsettings.json",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\.gitignore",
               "RelativeDocumentMoniker": "TodoApi\\.gitignore",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TodoItem.cs",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Models\\TodoItem.cs",
               "RelativeDocumentMoniker": "TodoApi\\Models\\TodoItem.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TodoItemsController.cs",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Controllers\\TodoItemsController.cs",
               "RelativeDocumentMoniker": "TodoApi\\Controllers\\TodoItemsController.cs",
@@ -119,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Program.cs",
               "RelativeDocumentMoniker": "TodoApi\\Program.cs",
@@ -132,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "TodoContext.cs",
               "DocumentMoniker": "C:\\Users\\home\\source\\repos\\daily\\TodoApi\\TodoApi\\Models\\TodoContext.cs",
               "RelativeDocumentMoniker": "TodoApi\\Models\\TodoContext.cs",

@@ -27,9 +27,9 @@
         </div>
     </div>
     <div id="container">
-
         <div id="list-header">
-            <div id="addNoteDiv" onclick="popup()">
+            <!-- Removido onclick e adicionado ID -->
+            <div id="addNoteDiv">
                 <i class="fa-solid fa-plus"></i>
             </div>
             <div class="blankDiv"></div>
@@ -41,6 +41,7 @@
         </div>
     </div>
 
-    <script src="{% static 'dashboard/js/script.js' %}"></script>
+    <!-- Script no FINAL do body com defer -->
+    <script src="{% static 'dashboard/js/script.js' %}" defer></script>
 </body>
 </html>

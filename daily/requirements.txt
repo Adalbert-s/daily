@@ -18,4 +18,5 @@ sqlparse
 tzdata
 django-babel
 requests
-
+enviromen
+environ

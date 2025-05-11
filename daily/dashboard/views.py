@@ -1,70 +1,105 @@
-from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Note
-from .serializers import NoteSerializer
 from rest_framework.permissions import IsAuthenticated
-from django.http import JsonResponse
+from rest_framework import status
+from django.shortcuts import render
+from .models import TodoNota as Note  # Renomeando TodoNota para Note
+from .serializers import TodoNotaSerializer as NoteSerializer  # Renomeando TodoNotaSerializer para NoteSerializer
+
 import logging
 
 logger = logging.getLogger(__name__)
 
-# View para renderizar a página inicial
-def home(request):
+def dashboard_view(request):
     return render(request, 'dashboard/index.html')
 
-# View para listar todas as notas do usuário autenticado (GET)
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_notes(request):
-    notes = Note.objects.filter(user=request.user)  # Filtra notas do usuário autenticado
-    serializer = NoteSerializer(notes, many=True)
-    logger.info(serializer.data)  # Log das notas retornadas
-    return Response(serializer.data)
-
-# View para criar uma nova nota (POST)
-@permission_classes([IsAuthenticated])
-@api_view(['POST'])
-
-@permission_classes([IsAuthenticated])
-@api_view(['POST'])
-def create_note(request):
-    logger.info(f"Received request method: {request.method}")
-    logger.info(f"Request data: {request.data}")
-    
-    # Copia os dados enviados e adiciona o usuário autenticado
-    data = request.data.copy()
-    data['user'] = request.user.id  # Adiciona o ID do usuário autenticado
-    
-    # Cria o serializer com os dados atualizados
-    serializer = NoteSerializer(data=data)
-    
-    if serializer.is_valid():
-        serializer.save()  # Salva no banco de dados
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# View para atualizar uma nota existente (PUT)
-@api_view(['PUT'])
-def update_note(request, note_id):
+    """Lista todas as notas do usuario autenticado"""
     try:
-        note = Note.objects.get(id=note_id, user=request.user)  # Busca nota do usuário autenticado
-    except Note.DoesNotExist:
-        return Response({'error': 'Note not found'}, status=status.HTTP_404_NOT_FOUND)
-
-    serializer = NoteSerializer(note, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+        notes = Note.objects.filter(user=request.user)
+        serializer = NoteSerializer(notes, many=True)
         return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logger.error(f"Error fetching notes: {str(e)}")
+        return Response(
+            {'error': 'Failed to fetch notes'}, 
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
-# View para deletar uma nota existente (DELETE)
-@api_view(['DELETE'])
-def delete_note(request, note_id):
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_note(request):
+    """Cria uma nova nota"""
     try:
-        note = Note.objects.get(id=note_id, user=request.user)  # Busca nota do usuário autenticado
-        note.delete()
-        return Response({'message': 'Note deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        serializer = NoteSerializer (data={
+            'titulo': request.data.get('titulo', ''),
+            'descricao': request.data.get('descricao', ''),
+            'data': request.data.get('data', ''),
+            'hora': request.data.get('hora', ''),
+            'user': request.user.id
+        })
+        
+        if serializer.is_valid():
+            note = serializer.save()
+            return Response(serializer.data, status=201)
+        
+        return Response({'errors': serializer.errors}, status=400)
+        
+    except Exception as e:
+        logger.error(f"Error creating note: {str(e)}")
+        return Response({'error': str(e)}, status=500)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_note(request, pk):
+    """Atualiza uma nota existente"""
+    try:
+        note = Note.objects.get(pk=pk, user=request.user)
+        serializer = NoteSerializer(note, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+            
+        return Response(
+            {'errors': serializer.errors},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+        
     except Note.DoesNotExist:
-        return Response({'error': 'Note not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            {'error': 'Note not found'}, 
+            status=status.HTTP_404_NOT_FOUND
+        )
+    except Exception as e:
+        logger.error(f"Error updating note: {str(e)}")
+        return Response(
+            {'error': 'Internal server error'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_note(request, pk):
+    """Exclui uma nota existente"""
+    try:
+        note = Note.objects.get(pk=pk, user=request.user)
+        note.delete()
+        return Response(
+            {'message': 'Note deleted successfully'},
+            status=status.HTTP_204_NO_CONTENT
+        )
+        
+    except Note.DoesNotExist:
+        return Response(
+            {'error': 'Note not found'}, 
+            status=status.HTTP_404_NOT_FOUND
+        )
+    except Exception as e:
+        logger.error(f"Error deleting note: {str(e)}")
+        return Response(
+            {'error': 'Internal server error'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )

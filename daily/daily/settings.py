@@ -1,22 +1,19 @@
-# -*- coding: utf-8 -*-
 
 import os
-import environ
+from pathlib import Path
 
-# Inicialize o ambiente e leia o arquivo .env
-env = environ.Env()
-environ.Env.read_env()  
-
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Caminho base do projeto
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret Key (sempre manter em segredo)
-SECRET_KEY = '635f4611-feb5-4472-9dfb-015195f33eb7'
+SECRET_KEY = 'y8w0(32r68=x2d7(7wdnl_qagab3d5#4jb_aki(!##t)+01ak+'
+
+# Caminho base do projeto
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Debug (desabilitar em produção)
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Definindo o modelo de usuário customizado
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -74,20 +71,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'daily.wsgi.application'
 
-
-
-import environ
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# carrega .env
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-# usa apenas DATABASE_URL
 DATABASES = {
-    'default': env.db()  # lê DATABASE_URL do .env
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'iBvElZhlNMfYStNyXHOlReSUYpMtjuGt',
+        'HOST': 'maglev.proxy.rlwy.net',
+        'PORT': '25532',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,19 +97,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Autenticação
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  
-    ],
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',  
-    ),
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
 
 
+# Configuração do CORS
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -141,24 +130,43 @@ CORS_ALLOW_METHODS = [
     'OPTIONS',
 ]
 
+# Session/Cookie
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'Lax'
 
 
+# Configuração de API Externa
 EXTERNAL_API_BASE_URL = 'https://api-1-4c9f.onrender.com/'
 EXTERNAL_API_REGISTER_URL = EXTERNAL_API_BASE_URL + 'api/TodoItem'
 
-
-
+# Localização e Idioma
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
+# Arquivos estáticos
 STATIC_URL = '/static/'
-
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'app/static'),  
+    os.path.join(BASE_DIR, 'dashboard/static'),  
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+#LOGGING = {
+    #'version': 1,
+    #'handlers': {
+        #'console': {
+            #'class': 'logging.StreamHandler',
+        #},
+    #},
+    #'loggers': {
+       # 'django': {
+        #    'handlers': ['console'],
+        #    'level': 'DEBUG',
+        #},
+    #},
+#}

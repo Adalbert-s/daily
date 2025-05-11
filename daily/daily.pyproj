@@ -43,7 +43,6 @@
     <Compile Include="dashboard\migrations\__init__.py" />
     <Compile Include="dashboard\models.py" />
     <Compile Include="dashboard\serializers.py" />
-    <Compile Include="dashboard\tests.py" />
     <Compile Include="dashboard\urls.py" />
     <Compile Include="dashboard\views.py" />
     <Compile Include="dashboard\__init__.py" />
@@ -108,6 +107,7 @@
     <Folder Include="users\templates\users\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".env" />
     <Content Include="app\static\app\css\dashboard.css" />
     <Content Include="app\static\app\css\dashboard.rtl.css" />
     <Content Include="app\static\app\images\favicon.ico" />
@@ -175,6 +175,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="env1\">
+      <Id>env1</Id>
+      <Version>3.9</Version>
+      <Description>env1 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
     <Interpreter Include="env\">
       <Id>env</Id>
       <Version>3.9</Version>
