@@ -1,16 +1,71 @@
 <!-- users/templates/users/register.html -->
-{% extends "app/layout.html" %}
 
-{% block title %}Cadastro{% endblock %}
+<h2>Cadastro de Usuário</h2>
 
-{% block content %}
-<div class="form-container">
-    <h2>Cadastro</h2>
-    <form method="post" class="register-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Registrar</button>
-    </form>
-    <p class="login-link">Ja possui uma conta? <a href="{% url 'login' %}">Entrar</a></p>
-</div>
-{% endblock %}
+<form id="register-form">
+    <label for="username">Usuário:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="email">E-mail:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="password">Senha:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<p id="register-message"></p>
+
+<script>
+    document.getElementById('register-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const result = await response.json();
+            console.log(result);
+            const message = document.getElementById('register-message');
+
+            if (response.ok) {
+                message.style.color = 'green';
+                message.textContent = 'Cadastro realizado com sucesso!';
+            } else {
+                message.style.color = 'red';
+                message.textContent = result.detail || 'Erro ao registrar.';
+            }
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById('register-message').textContent = 'Erro ao conectar com o servidor.';
+        }
+    });
+
+    // Função para obter o token CSRF
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
