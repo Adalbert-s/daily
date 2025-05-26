@@ -3,10 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard_view, name='dashboard'),  # Rota para o dashboard
-    path('get-todonotas/', views.get_notes, name='get_todonotas'),
-    path('create-todonota/', views.create_note, name='create_todonota'),
-    path('update-todonota/<int:note_id>/', views.update_note, name='update_todonota'),
-    path('delete-todonota/<int:note_id>/', views.delete_note, name='delete_todonota'),
+    path('getNotas/', views.get_notes, name='getNotas'),
+    path('createNota/', views.create_note, name='createNota'),
+    path('updateNota/<int:note_id>/', views.update_note, name='updateNota'),
+    path('deleteNota/<int:note_id>/', views.delete_note, name='deleteNota'),
     
-    path('check-upcoming/', views.check_upcoming_notes, name='check_upcoming_notes'),
+    path('check/', views.check_upcoming_notes, name='checkNotes'),
+    path('gerar-relatorio/', views.gerar_relatorio, name='gerar_relatorio'),
+
 ]

@@ -64,7 +64,8 @@ dependencies = [
     "urllib3 (==2.4.0)",
     "virtualenv (==20.31.2)",
     "zstandard (==0.23.0)",
-    "dj-database-url (>=2.3.0,<3.0.0)"
+    "dj-database-url (>=2.3.0,<3.0.0)",
+    "reportlab (>=4.4.1,<5.0.0)"
 ]
 
 
