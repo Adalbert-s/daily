@@ -8,4 +8,5 @@ urlpatterns = [
     path('update-todonota/<int:note_id>/', views.update_note, name='update_todonota'),
     path('delete-todonota/<int:note_id>/', views.delete_note, name='delete_todonota'),
     
+    path('check-upcoming/', views.check_upcoming_notes, name='check_upcoming_notes'),
 ]

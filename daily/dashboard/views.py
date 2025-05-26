@@ -31,34 +31,16 @@ def get_notes(request):
 User = get_user_model()
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_note(request):
-    """Cria uma nova nota sem exigir autenticacao"""
-    try:
-        user_id = request.data.get('user')
-        user = User.objects.get(pk=user_id) if user_id else None
+    serializer = NoteSerializer(data=request.data, context={'request': request})
 
-        serializer = NoteSerializer(
-            data={
-                'titulo': request.data.get('titulo', ''),
-                'descricao': request.data.get('descricao', ''),
-                'data': request.data.get('data', ''),
-                'hora': request.data.get('hora', ''),
-                'user': user.id if user else None
-            },
-            context={'request': request}
-        )
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
 
-        if serializer.is_valid():
-            note = serializer.save()
-            return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
 
-        return Response({'errors': serializer.errors}, status=400)
-
-    except User.DoesNotExist:
-        return Response({'error': 'Usuario nao encontrado'}, status=404)
-    except Exception as e:
-        logger.error(f"Erro ao criar nota: {str(e)}")
-        return Response({'error': str(e)}, status=500)
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_note(request, pk):
@@ -109,5 +91,39 @@ def delete_note(request, pk):
         logger.error(f"Error deleting note: {str(e)}")
         return Response(
             {'error': 'Internal server error'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+#---------------------------------------------------------------------------------------------#
+from datetime import datetime, timedelta
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def check_upcoming_notes(request):
+    """Verifica se ha notas proximas do horario"""
+    try:
+        now = datetime.now()
+        alertas = []
+
+        notes = Note.objects.filter(user=request.user)
+
+        for note in notes:
+            note_datetime = datetime.combine(note.data, note.hora)
+            diff = note_datetime - now
+
+            if timedelta(minutes=0) <= diff <= timedelta(minutes=30):
+                alertas.append({
+                    "id": note.id,
+                    "titulo": note.titulo,
+                    "descricao": note.descricao,
+                    "data": note.data,
+                    "hora": note.hora,
+                    "mensagem": "Essa nota esta proxima do horario!"
+                })
+
+        return Response(alertas, status=status.HTTP_200_OK)
+
+    except Exception:
+        return Response(
+            {'error': 'Erro ao verificar notas proximas.'},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
