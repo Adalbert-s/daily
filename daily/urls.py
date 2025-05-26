@@ -23,7 +23,7 @@ urlpatterns = [
          ),
          name='login'),
 
-    # Usuários
+    # Usuï¿½rios
     path('users/', include('users.urls')),
 
     # Logout
@@ -32,7 +32,7 @@ urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
 
-    # Dashboard (Aqui incluímos as URLs do app dashboard)
+    # Dashboard (Aqui incluï¿½mos as URLs do app dashboard)
     path('dashboard/', include('dashboard.urls')),  # Certifique-se de que o app 'dashboard' tem um arquivo 'urls.py' e suas views
 
 

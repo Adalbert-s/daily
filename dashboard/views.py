@@ -31,34 +31,18 @@ def get_notes(request):
 User = get_user_model()
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_note(request):
-    """Cria uma nova nota sem exigir autenticacao"""
-    try:
-        user_id = request.data.get('user')
-        user = User.objects.get(pk=user_id) if user_id else None
+    serializer = NoteSerializer(data=request.data, context={'request': request})
 
-        serializer = NoteSerializer(
-            data={
-                'titulo': request.data.get('titulo', ''),
-                'descricao': request.data.get('descricao', ''),
-                'data': request.data.get('data', ''),
-                'hora': request.data.get('hora', ''),
-                'user': user.id if user else None
-            },
-            context={'request': request}
-        )
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
 
-        if serializer.is_valid():
-            note = serializer.save()
-            return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
 
-        return Response({'errors': serializer.errors}, status=400)
 
-    except User.DoesNotExist:
-        return Response({'error': 'Usuario nao encontrado'}, status=404)
-    except Exception as e:
-        logger.error(f"Erro ao criar nota: {str(e)}")
-        return Response({'error': str(e)}, status=500)
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_note(request, pk):

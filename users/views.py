@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from .serializers import RegisterSerializer
 from django.contrib.auth import get_user_model
 from .serializers import LoginSerializer
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 
 User = get_user_model()
@@ -52,7 +52,6 @@ class Register(APIView):
 
 class LoginView(APIView):
     def post(self, request):
-        # Valida os dados recebidos com o serializer
         serializer = LoginSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -60,25 +59,26 @@ class LoginView(APIView):
         username = serializer.validated_data['username']
         password = serializer.validated_data['password']
 
-        # Tenta autenticar o usuario com o Django
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            # Se o usuario for autenticado com sucesso, envia os dados para a API externa
+            # Cria a sessão do Django (login real)
+            login(request, user)
+
+            # Envia os dados para a API externa (se precisar)
             response = requests.post(settings.EXTERNAL_API_LOGIN_URL, data={
                 'Nome': username,
                 'Senha': password,
             })
 
             if response.status_code == 200:
-                return Response(response.json(), status=status.HTTP_200_OK)
+                return Response({"message": "Login bem-sucedido"}, status=status.HTTP_200_OK)
             else:
                 return Response(
                     {"detail": "Falha ao autenticar com a API externa"},
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-        # Caso o usuario não seja encontrado ou a senha esteja incorreta
         return Response(
             {"detail": "Credenciais invalidas ou falha na autenticacao"},
             status=status.HTTP_400_BAD_REQUEST

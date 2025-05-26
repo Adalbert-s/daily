@@ -11,14 +11,14 @@ SECRET_KEY = 'y8w0(32r68=x2d7(7wdnl_qagab3d5#4jb_aki(!##t)+01ak+'
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Debug (desabilitar em produção)
+# Debug (desabilitar em produï¿½ï¿½o)
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-# Definindo o modelo de usuário customizado
+# Definindo o modelo de usuï¿½rio customizado
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Redirecionamento após login e logout
+# Redirecionamento apï¿½s login e logout
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -98,19 +98,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Autenticação
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        #'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.IsAuthenticated',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
-
-# Configuração do CORS
+# Configuracao do CORS
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
@@ -139,18 +137,17 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 
 
-# Configuração de API Externa
+# Configuraï¿½ï¿½o de API Externa
 EXTERNAL_API_BASE_URL = 'https://api-1-4c9f.onrender.com/'
 EXTERNAL_API_REGISTER_URL = EXTERNAL_API_BASE_URL + 'api/TodoItem'
 
-# Localização e Idioma
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Arquivos estáticos
+# Arquivos estï¿½ticos
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
