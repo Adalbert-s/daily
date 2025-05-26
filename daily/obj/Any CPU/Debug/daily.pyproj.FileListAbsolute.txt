@@ -1,0 +1,4 @@
+C:\Users\uzuki\source\repos\daily\daily\obj\Any CPU\Debug\daily.pyproj.CoreCompileInputs.cache
+C:\Users\home\source\repos\Adalbert-s\daily\daily\obj\Any CPU\Debug\daily.pyproj.CoreCompileInputs.cache
+C:\Users\diogo\Source\Repos\daily\daily\obj\Any CPU\Debug\daily.pyproj.CoreCompileInputs.cache
+C:\Users\home\Source\Repos\daily\daily\obj\Any CPU\Debug\daily.pyproj.CoreCompileInputs.cache
