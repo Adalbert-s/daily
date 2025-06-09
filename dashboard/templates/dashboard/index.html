@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daily Guide</title>
+    <link rel="icon" href="{% static 'app/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    {% csrf_token %}
+
+</head>
+<body>
+    <div id="top-navbar">
+        <div id="navbar-left">
+            <h1>Daily Guide</h1>
+        </div>
+        <div id="navbar-right">
+            <a href="/">
+                <button id="homeButton">Início</button>
+            </a>
+            <a href="{% url 'logout' %}">
+                <button id="logoutBotn">Desconectar</button>
+            </a>
+        </div>
+    </div>
+    <div id="container">
+        <div id="list-header">
+            <!-- Removido onclick e adicionado ID -->
+            <div id="addNoteDiv">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="blankDiv"></div>
+            <div class="blankDiv"></div>
+        </div>
+
+        <div id="list-container">
+            <ul id="notes-list"></ul>
+        </div>
+    </div>
+
+    <!-- Script no FINAL do body com defer -->
+    <script src="{% static 'dashboard/js/script.js' %}" defer></script>
+</body>
+</html>

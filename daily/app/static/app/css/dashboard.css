@@ -1,0 +1,94 @@
+.bi {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Sidebar */
+@media (min-width: 768px) {
+    .sidebar .offcanvas-lg {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+    }
+
+    .navbar-search {
+        display: block;
+    }
+}
+
+.sidebar .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+    .sidebar .nav-link.active {
+        color: #2470dc;
+    }
+
+.sidebar-heading {
+    font-size: 0.75rem;
+}
+
+/* Navbar */
+.navbar-brand {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .form-control {
+    padding: 0.75rem 1rem;
+}
+
+/* Alterar a cor do botão no modo escuro */
+body[data-bs-theme="dark"] .dropdown-toggle {
+    color: #fff; /* Cor do texto */
+    background-color: #343a40; /* Cor de fundo do botão */
+    border-color: #495057; /* Cor da borda */
+}
+
+    body[data-bs-theme="dark"] .dropdown-toggle svg {
+        fill: #fff; /* Cor do ícone */
+    }
+
+/* Alinha os botões lado a lado */
+#report-list li {
+    background-color: #f9f9f9;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+}
+
+    #report-list li .button-group {
+        display: flex;
+        justify-content: flex-end; /* Alinha os botões à direita */
+        gap: 10px; /* Espaçamento entre os botões */
+    }
+
+    /* Botões permanecem alinhados */
+    #report-list li .btn {
+        min-width: 80px;
+        text-align: center;
+    }
+
+/* Botões ocultos inicialmente */
+.hidden {
+    display: none;
+}
+
+
+
+
+    /* Estilo para itens completados */
+    #report-list li.completed {
+        text-decoration: line-through;
+        color: gray;
+    }
